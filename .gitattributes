@@ -1,28 +1,29 @@
-# Unity project - Git LFS configuration
+# ==========================================================
+# Unity + Vuforia project - Git LFS configuration
+# ==========================================================
 
-# Common binary assets
+# --- Common Unity binary assets ---
 *.psd filter=lfs diff=lfs merge=lfs -text
 *.png filter=lfs diff=lfs merge=lfs -text
 *.jpg filter=lfs diff=lfs merge=lfs -text
-*.jpeg filter=lfs diff=lfs merge=lfs -text
 *.tga filter=lfs diff=lfs merge=lfs -text
 *.bmp filter=lfs diff=lfs merge=lfs -text
 
-# 3D models
+# --- 3D models ---
 *.fbx filter=lfs diff=lfs merge=lfs -text
 *.obj filter=lfs diff=lfs merge=lfs -text
 *.blend filter=lfs diff=lfs merge=lfs -text
+*.glb filter=lfs diff=lfs merge=lfs -text
+*.gltf filter=lfs diff=lfs merge=lfs -text
 
-# Audio
+# --- Audio/Video ---
 *.wav filter=lfs diff=lfs merge=lfs -text
 *.mp3 filter=lfs diff=lfs merge=lfs -text
 *.ogg filter=lfs diff=lfs merge=lfs -text
-
-# Video
 *.mp4 filter=lfs diff=lfs merge=lfs -text
 *.mov filter=lfs diff=lfs merge=lfs -text
 
-# Other large Unity files
+# --- Unity project files ---
 *.unity filter=lfs diff=lfs merge=lfs -text
 *.prefab filter=lfs diff=lfs merge=lfs -text
 *.mat filter=lfs diff=lfs merge=lfs -text
@@ -30,7 +31,18 @@
 *.asset filter=lfs diff=lfs merge=lfs -text
 *.controller filter=lfs diff=lfs merge=lfs -text
 
-# Ignore text-based assets for version control readability
+# --- Vuforia-specific files ---
+*.dat filter=lfs diff=lfs merge=lfs -text   # Vuforia target databases
+*.xml filter=lfs diff=lfs merge=lfs -text   # Database configs, model target definitions
+*.target filter=lfs diff=lfs merge=lfs -text # (optional) any custom target data
+*.bytes filter=lfs diff=lfs merge=lfs -text  # Vuforia-generated binary data files
+
+# --- Other large data ---
+*.zip filter=lfs diff=lfs merge=lfs -text
+*.rar filter=lfs diff=lfs merge=lfs -text
+*.tgz filter=lfs diff=lfs merge=lfs -text
+
+# --- Text-based files (not in LFS) ---
 *.cs text eol=lf
 *.shader text eol=lf
 *.json text eol=lf
