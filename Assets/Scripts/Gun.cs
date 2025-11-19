@@ -14,17 +14,17 @@ public class Gun : MonoBehaviour
     void Update()
     {
         // Check for screen tap (mouse click in editor)
-        if (Input.GetMouseButtonDown(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began))
+        /*if (Input.GetMouseButtonDown(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began))
         {
             // Check if the tap is on the "gun" side of the screen
             if (Input.mousePosition.x > Screen.width / 2 || Input.GetTouch(0).position.x > Screen.width/2)
             {
                 Shoot();
             }
-        }
+        }*/
     }
 
-    void Shoot()
+    public void Shoot()
     {
         // Spawn a bullet at the gun's position and rotation
         Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
