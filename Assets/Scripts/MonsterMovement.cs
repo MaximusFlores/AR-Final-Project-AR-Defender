@@ -8,6 +8,8 @@ public class MonsterMovement : MonoBehaviour
     public float speed = 0.05f;
     private Rigidbody rb;
 
+    public PlayerManagement PM;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -37,6 +39,11 @@ public class MonsterMovement : MonoBehaviour
 
             Destroy(other.gameObject); // Destroy the bullet
             Destroy(gameObject);       // Destroy myself (the monster)
+        } else if (other.CompareTag("MainCamera")) // When touching the player
+        {
+            PM.TakeDamage(20); // Deal Damage to player
+
+            Destroy(gameObject); // Destroy the enemy
         }
     }
 }

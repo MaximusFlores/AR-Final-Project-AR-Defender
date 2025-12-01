@@ -7,7 +7,7 @@ public class ScoreManager : MonoBehaviour
     public static ScoreManager instance;
 
     public TextMeshProUGUI scoreText; // Drag your UI Text here
-    private int score = 0;
+    public static int score = 0;
 
     void Awake()
     {

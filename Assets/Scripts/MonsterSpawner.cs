@@ -11,6 +11,8 @@ public class MonsterSpawner : MonoBehaviour
     private float timer;
     private Transform playerCamera;
 
+    public PlayerManagement PM;
+
     void Start()
     {
         // Find the player (the AR Camera is tagged "MainCamera" by default)
@@ -59,5 +61,6 @@ public class MonsterSpawner : MonoBehaviour
 
         movement.target = playerCamera;
         movement.speed = monsterSpeed;
+        movement.PM = PM;
     }
 }

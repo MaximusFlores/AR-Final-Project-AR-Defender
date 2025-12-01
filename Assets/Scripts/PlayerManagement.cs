@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerManagement : MonoBehaviour
 {
@@ -17,18 +18,17 @@ public class PlayerManagement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (CurrentHealth <= 0)
+        {
+            SceneManager.LoadScene(2);
+        }
     }
 
-    public void HealthTest()
+    public void TakeDamage(int damage)
     {
-        if (CurrentHealth != 0)
-        {
-            CurrentHealth = CurrentHealth - 20;
-        } else
-        {
-            CurrentHealth = MaxHealth;
-        }
+        CurrentHealth = CurrentHealth-damage;
+        if (CurrentHealth < 0)
+            CurrentHealth = 0;
         HealthBar.SetHealth(CurrentHealth);
     }
 }
