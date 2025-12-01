@@ -2,18 +2,16 @@ using UnityEngine;
 
 public class MonsterMovement : MonoBehaviour
 {
-    // --- ADD THIS LINE ---
     public float lifeTime = 10f; // Time in seconds before auto-destroy
 
     public Transform target; // Set by the spawner
-    public float speed = 1.0f;
+    public float speed = 0.05f;
     private Rigidbody rb;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         
-        // --- ADD THIS LINE ---
         // Schedule this monster to be destroyed after 'lifeTime' seconds
         Destroy(gameObject, lifeTime);
     }
@@ -34,6 +32,9 @@ public class MonsterMovement : MonoBehaviour
         // Check if the object that hit me is tagged "Bullet"
         if (other.CompareTag("Bullet"))
         {
+            // Find the ScoreManager and add 10 points
+            ScoreManager.instance.AddScore(10);
+
             Destroy(other.gameObject); // Destroy the bullet
             Destroy(gameObject);       // Destroy myself (the monster)
         }
