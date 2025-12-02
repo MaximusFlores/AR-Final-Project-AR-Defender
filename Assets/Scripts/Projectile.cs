@@ -4,6 +4,8 @@ public class Projectile : MonoBehaviour
 {
     public float speed = 10f;
     public float lifetime = 5f;
+    public int damageToPlayer = 10;
+    public int pointsForBlocking = 5; //points eared for blocking
 
     private void Start()
     {
@@ -18,6 +20,24 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Destroy(gameObject);
+        //1. Check if we hit the SHIELD
+        if (other.CompareTag("Shield"))
+        {
+            //Points for successful block
+            ScoreManager.instance.AddScore(pointsForBlocking);
+            //Destroy the projectile
+            Destroy(gameObject);
+        }
+        else if (other.CompareTag("MainCamera")) {
+            //Find the PlayerManagement script to deal damage
+            PlayerManagement pm = other.GetComponent<PlayerManagement>();
+            if (pm == null) pm = other.GetComponentInParent<PlayerManagement>();
+
+            if (pm != null)
+            {
+                pm.TakeDamage(damageToPlayer);
+            }
+            Destroy(gameObject);
+        }
     }
 }
