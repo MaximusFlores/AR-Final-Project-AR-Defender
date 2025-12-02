@@ -9,6 +9,8 @@ public class Shooter : MonoBehaviour
     public float shootInterval = 2f; // seconds between shots
     private float shootTimer = 0f;
 
+    public PlayerManagement PM;
+
     // Color charge effect
     public Renderer chargeRenderer;
     public Color startColor = new Color(0.167f, 0.024f, 0.240f);
@@ -37,6 +39,8 @@ public class Shooter : MonoBehaviour
     void ShootProjectile()
     {
         GameObject projectile = Instantiate(projectilePrefab, shootPoint.position, shootPoint.rotation);
-        projectile.GetComponent<Projectile>().speed = shootForce;
+        Projectile pr = projectile.GetComponent<Projectile>();
+        pr.speed = shootForce;
+        pr.PM = PM;
     }
 }

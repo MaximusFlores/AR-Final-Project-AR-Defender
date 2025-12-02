@@ -5,7 +5,7 @@ public class MonsterMovement : MonoBehaviour
     public float lifeTime = 10f; // Time in seconds before auto-destroy
 
     public Transform target; // Set by the spawner
-    public float speed = 0.05f;
+    public float speed = 0.005f;
     private Rigidbody rb;
 
     public PlayerManagement PM;

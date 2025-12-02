@@ -7,6 +7,8 @@ public class Projectile : MonoBehaviour
     public int damageToPlayer = 10;
     public int pointsForBlocking = 5; //points eared for blocking
 
+    public PlayerManagement PM;
+
     private void Start()
     {
         Destroy(gameObject, lifetime);
@@ -29,13 +31,11 @@ public class Projectile : MonoBehaviour
             Destroy(gameObject);
         }
         else if (other.CompareTag("MainCamera")) {
-            //Find the PlayerManagement script to deal damage
-            PlayerManagement pm = other.GetComponent<PlayerManagement>();
-            if (pm == null) pm = other.GetComponentInParent<PlayerManagement>();
+            
 
-            if (pm != null)
+            if (PM != null)
             {
-                pm.TakeDamage(damageToPlayer);
+                PM.TakeDamage(damageToPlayer);
             }
             Destroy(gameObject);
         }

@@ -4,7 +4,7 @@ public class MonsterSpawner : MonoBehaviour
 {
     public GameObject monsterPrefab; // Assign your Monster prefab in the Inspector
     public float spawnRate = 2.0f;   // Spawn a monster every 2 seconds
-    public float monsterSpeed = 1.0f;
+    public float monsterSpeed = 0.05f;
 
     public float spawnRadius = 0.2f;
     
@@ -43,7 +43,7 @@ public class MonsterSpawner : MonoBehaviour
         // transform.up      = Local Y axis
         // transform.forward = Local Z axis
         Vector3 spawnPos = transform.position + 
-                           (transform.forward * randomPoint.x) + 
+                           //(transform.forward * randomPoint.x) + 
                            (transform.up * randomPoint.y);
 
 
@@ -54,6 +54,7 @@ public class MonsterSpawner : MonoBehaviour
         // Get the monster's movement script and tell it who to chase
         
         MonsterMovement movement = monster.GetComponent<MonsterMovement>();
+        Shooter shoot = monster.GetComponent<Shooter>();
         
         // Safety check: Add it if it's missing
         if (movement == null) movement = monster.AddComponent<MonsterMovement>();
@@ -62,5 +63,6 @@ public class MonsterSpawner : MonoBehaviour
         movement.target = playerCamera;
         movement.speed = monsterSpeed;
         movement.PM = PM;
+        shoot.PM = PM;
     }
 }
